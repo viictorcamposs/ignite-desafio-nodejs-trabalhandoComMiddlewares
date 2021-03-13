@@ -34,7 +34,29 @@ function checksCreateTodosUserAvailability(request, response, next) {
 }
 
 function checksTodoExists(request, response, next) {
+  const { username } = request.headers;
+  const { id } = request.params;
+
+  const user = users.find(user => user.username === username);
+
+  if (!user) return response.status(404).json({
+    error: "Error while we tried to proceed."
+  });
+
+  if (!validate(id)) return response.status(400).json({
+    error: "Error while we tried to proceed."
+  });
   
+  const task = user.todos.find(task => task.id === id);
+
+  if (!task) return response.status(404).json({
+    error: "Error while we tried to proceed."
+  });
+
+  request.todo = task;
+  request.user = user;
+
+  return next();
 }
 
 function findUserById(request, response, next) {
