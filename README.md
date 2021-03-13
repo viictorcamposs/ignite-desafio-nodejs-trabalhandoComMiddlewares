@@ -24,7 +24,9 @@
 
 ---
 
-<img src="https://readme-maker.herokuapp.com/uploads/87e2daaeab5bda5a-teste2.png" width="1200">
+<p align="center">
+  <img src="./assets/teste2.png" width="600">
+</p>
 
 ### Sobre
 
